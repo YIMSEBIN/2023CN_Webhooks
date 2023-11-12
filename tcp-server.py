@@ -10,6 +10,7 @@ BUFFER_SIZE = 1024
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind((IP_ADDR, TCP_PORT))
+s.bind()
 s.listen(1)
 
 while 1 :
@@ -17,7 +18,7 @@ while 1 :
     print('Client address: ', addr)
     data = conn.recv(BUFFER_SIZE)
     #if not data : break
-    currentTime = " " + " updated !!! " + time.ctime(time.time()) + "\r\n"
+    currentTime = " " + " new server 2 updated !!! " + time.ctime(time.time()) + "\r\n"
     print(data.decode('utf-8'))
     data = data + currentTime.encode('ascii')
     conn.send(data)
